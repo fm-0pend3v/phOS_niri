@@ -6,7 +6,7 @@ COPY system_files /system_files
 # un default di sistema pulito ed evitare conflitti futuri con l'utente in /etc
 #COPY config/etc/xdg-desktop-portal/niri-portals.conf /usr/share/xdg-desktop-portal/niri-portals.conf
 
-FROM quay.io/fedora-ostree-desktops/sway-atomic:44
+FROM quay.io/fedora-ostree-desktops/sway-atomic:45
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
