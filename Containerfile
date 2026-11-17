@@ -8,6 +8,7 @@ COPY system_files /system_files
 
 FROM quay.io/fedora-ostree-desktops/sway-atomic:45
 
+
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
