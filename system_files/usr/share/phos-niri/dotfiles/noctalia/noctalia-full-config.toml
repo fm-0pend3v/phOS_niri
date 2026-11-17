@@ -667,8 +667,8 @@ umbriel_overview_type_to_launch_enabled = false
     style = "carousel"
 
 [storage]
-key_file = ""
-key_source = "secret-service"
+key_file = "$HOME/.local/share/noctalia/storage-key"
+key_source = "file"
 
 [system.monitor]
 cpu_freq_activity_threshold = 2.5
