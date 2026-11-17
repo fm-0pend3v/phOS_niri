@@ -3,6 +3,7 @@ high_contrast = false
 ui_scale = 1.0
 
 [audio]
+colorize_icons = false
 enable_notification_sounds = true
 enable_overdrive = false
 enable_power_sounds = true
@@ -11,6 +12,7 @@ enable_sounds = true
 enable_volume_sounds = true
 sound_theme = "freedesktop"
 sound_volume = 0.5
+spectrum_frame_rate = 60
 
 [backdrop]
 blur_intensity = 0.5
@@ -23,6 +25,7 @@ order = [ "default" ]
     [bar.default]
     auto_hide = false
     auto_hide_delay_ms = 0
+    auto_hide_reserve_space = false
     background_opacity = 1.0
     border = "outline_variant"
     border_width = 0.0
@@ -78,14 +81,22 @@ order = [ "default" ]
     widget_spacing = 6
 
         [bar.default.dead_zone]
+        click_through = false
 
 [battery]
 warning_threshold = 10
 
+[bluetooth]
+connect_when_enabled = false
+connection_notifications = false
+
 [brightness]
 enable_ddcutil = false
+enable_scheduled_brightness = false
 ignore_mmids = []
 minimum_brightness = 0.0
+scheduled_day_brightness = 1.0
+scheduled_night_brightness = 0.5
 sync_all_monitors = false
 
 [calendar]
@@ -104,6 +115,7 @@ refresh_minutes = 15
 
 [control_center]
 hidden_tabs = []
+show_avatar_border = true
 show_session_button = true
 show_shortcut_labels = true
 sidebar = "compact"
@@ -111,8 +123,14 @@ sidebar_section = "compact"
 width = 700
 
     [control_center.calendar]
+    hide_past_events = false
+    past_events_threshold_minutes = 30
     show_events_card = true
+    show_events_location = false
     show_week_numbers = false
+
+    [control_center.media]
+    show_visualizer = true
 
     [[control_center.shortcuts]]
     type = "wifi"
@@ -146,12 +164,17 @@ active_monitor_only = false
 active_opacity = 1.0
 active_scale = 1.0
 auto_hide = false
+auto_hide_reveal_delay_ms = 250
 background_opacity = 0.87999999523162842
 border = "outline_variant"
 border_width = 0.0
+colorize_icons = false
+compositor_blur = true
 concave_edge_corners = true
 cross_axis_padding = 8
 enabled = false
+icon_saturation = 1.0
+icon_shadow = false
 icon_size = 48
 inactive_opacity = 0.85000002384185791
 inactive_scale = 0.85000002384185791
@@ -250,12 +273,15 @@ pre_action_fade_seconds = 2.0
 
 [keybinds]
 cancel = [ "Escape" ]
+category_next = [ "Ctrl+Tab" ]
+category_previous = [ "Ctrl+Shift+ISO_Left_Tab" ]
 copy = [ "Ctrl+c" ]
 delete = [ "Delete" ]
 down = [ "Down" ]
 left = [ "Left" ]
 right = [ "Right" ]
 save = [ "Ctrl+s" ]
+select_all = [ "Ctrl+a" ]
 tab_next = [ "Tab" ]
 tab_previous = [ "Shift+ISO_Left_Tab" ]
 up = [ "Up" ]
@@ -272,12 +298,14 @@ sunset = ""
 allow_empty_password = false
 blur_intensity = 0.5
 blurred_desktop = false
+dnd = false
 edge_smoothness = 0.30000001192092896
 enabled = true
 fingerprint = true
 grace_period_seconds = 0
 lock_before_suspend = true
 monitors = []
+tint_color = "surface"
 tint_intensity = 0.30000001192092896
 transition = [ "fade", "wipe", "disc", "stripes", "zoom", "honeycomb" ]
 transition_duration = 1500.0
@@ -317,6 +345,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_media_controls = true
         show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
@@ -334,19 +363,23 @@ border = true
 border_color = "outline_variant"
 border_width = 1.0
 collapse_on_dismiss = true
+colorize_icons = false
 enable_daemon = true
 follow_focused_output = false
+group_by_app = true
 history_retention_hours = 0
 keep_dismissed_in_history = true
 layer = "top"
 max_visible = 0
 monitors = []
+newest_on_edge = false
 offset_x = 20
 offset_y = 8
 position = "top_right"
 scale = 1.0
 show_actions = true
 show_app_name = true
+show_progress_bar = true
 width = 360
 
 [osd]
@@ -369,11 +402,13 @@ scale = 1.0
     bluetooth = true
     brightness = true
     caffeine = true
+    custom = true
     dnd = true
     keyboard_backlight = true
     keyboard_layout = true
     lock_keys = true
     media = true
+    media_volume = true
     nightlight = true
     power_profile = true
     privacy = true
@@ -381,6 +416,8 @@ scale = 1.0
     volume_input = true
     volume_output = true
     wifi = true
+
+[plugin_settings]
 
 [plugins]
 auto_update = "all"
@@ -406,10 +443,11 @@ enabled = [
     name = "community"
 
 [shell]
-app_icon_colorize = false
+app_icon_color = "on_primary"
 avatar_path = ""
 button_borders = true
 card_borders = true
+circular_avatar = true
 clipboard_auto_paste = "auto"
 clipboard_confirm_clear_history = true
 clipboard_enabled = true
@@ -424,13 +462,17 @@ font_family = "sans-serif"
 input_borders = true
 launch_apps_as_systemd_services = false
 launch_apps_custom_command = ""
+niri_overview_close_on_launch_enabled = false
 niri_overview_type_to_launch_enabled = false
 offline_mode = false
+panel_anchor_bar = "default"
 password_style = "default"
 polkit_agent = true
+polkit_colorize_icons = true
 popup_borders = true
 popup_shadows = true
 readline_shortcuts = false
+screen_time_colorize_icons = false
 screen_time_enabled = false
 settings_expand_all_groups = false
 settings_show_advanced = true
@@ -441,6 +483,8 @@ show_close_buttons = true
 show_location = true
 telemetry_enabled = false
 time_format = "{:%H:%M}"
+umbriel_audio_provider_enabled = false
+umbriel_overview_close_on_launch_enabled = false
 umbriel_overview_type_to_launch_enabled = false
 
     [shell.animation]
@@ -457,9 +501,11 @@ umbriel_overview_type_to_launch_enabled = false
     auto_paste = "auto"
     categories = true
     category_icons_only = false
+    colorize_icons = false
     compact = false
     default_view = "recent"
     fetch_exchange_rates = true
+    ignore_mouse = false
     layout = "full"
     pinned = []
     provider_prefix = "/"
@@ -467,6 +513,7 @@ umbriel_overview_type_to_launch_enabled = false
     show_app_actions = false
     show_app_origin_indicator = true
     show_icons = true
+    show_navigation_labels = true
     show_session_button = true
     show_settings_button = true
     sort_by_usage = true
@@ -489,7 +536,7 @@ umbriel_overview_type_to_launch_enabled = false
     clipboard_position = "center"
     control_center_placement = "attached"
     control_center_position = "auto"
-    floating_layer = "overlay"
+    floating_layer = "top"
     floating_offset = 8
     launcher_placement = "floating"
     launcher_position = "center"
@@ -504,7 +551,7 @@ umbriel_overview_type_to_launch_enabled = false
     session_placement = "attached"
     session_position = "auto"
     shadow = true
-    transparency_mode = "solid"
+    transparency_mode = "glass"
     wallpaper_placement = "attached"
     wallpaper_position = "auto"
     wallpaper_show_names = true
@@ -520,19 +567,27 @@ umbriel_overview_type_to_launch_enabled = false
 
     [shell.screenshot]
     annotate = false
+    append_mode_suffix = true
     close_on_copy = true
     close_on_save = true
     confirm_region = false
+    copy_on_close = false
     copy_to_clipboard = true
     directory = ""
     filename_pattern = ""
+    format = "png"
     freeze_screen = true
     pipe_command = ""
     pipe_to_command = false
+    quality = 90
+    region_border_width = 2.0
+    region_dim_opacity = 0.64999997615814209
     region_modifier = "none"
     remember_last_region = false
     save_to_file = true
     show_cursor = false
+    show_region_dimensions = true
+    show_region_hint = true
     skip_annotate_on_copy_save = false
 
     [shell.session]
@@ -549,6 +604,7 @@ umbriel_overview_type_to_launch_enabled = false
         enabled = true
         glyph = ""
         label = ""
+        lockscreen_shortcut = ""
         shortcut = "1"
         variant = "default"
 
@@ -559,6 +615,7 @@ umbriel_overview_type_to_launch_enabled = false
         enabled = true
         glyph = ""
         label = ""
+        lockscreen_shortcut = ""
         shortcut = "2"
         variant = "default"
 
@@ -569,6 +626,7 @@ umbriel_overview_type_to_launch_enabled = false
         enabled = true
         glyph = ""
         label = ""
+        lockscreen_shortcut = ""
         shortcut = "3"
         variant = "default"
 
@@ -579,6 +637,7 @@ umbriel_overview_type_to_launch_enabled = false
         enabled = true
         glyph = ""
         label = ""
+        lockscreen_shortcut = ""
         shortcut = "4"
         variant = "default"
 
@@ -589,6 +648,7 @@ umbriel_overview_type_to_launch_enabled = false
         enabled = true
         glyph = ""
         label = ""
+        lockscreen_shortcut = ""
         shortcut = "5"
         variant = "destructive"
 
@@ -597,6 +657,7 @@ umbriel_overview_type_to_launch_enabled = false
     direction = "down"
 
     [shell.window_switcher]
+    colorize_icons = false
     current_workspace_only = false
     mru = false
     show_all_outputs = true
@@ -655,6 +716,7 @@ pure_black_dark = false
 shell_mode = "follow"
 source = "builtin"
 sync_color_scheme = true
+terminal_colors = "palette"
 wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
@@ -672,6 +734,7 @@ enabled = true
 fill_color = ""
 fill_mode = "crop"
 per_monitor_directories = false
+sync_transitions = true
 transition = [ "fade", "wipe", "disc", "stripes", "zoom", "honeycomb" ]
 transition_duration = 1500.0
 transition_on_startup = false
@@ -680,6 +743,7 @@ transition_on_startup = false
     enabled = false
     interval_seconds = 1800
     order = "random"
+    pause_on_fullscreen = false
     recursive = false
 
 [weather]
