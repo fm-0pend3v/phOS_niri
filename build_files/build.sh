@@ -67,14 +67,15 @@ dnf install -y \
     noctalia
 
 # --- VULKAN AND LLAMA-CPP ---
-dnf copr enable -y sneed/llama-cpp-vulkan
+#dnf copr enable -y sneed/llama-cpp-vulkan
+dnf copr enable -y fm-0p3n-d3v/llama-cpp-vulkan-rpc
 dnf install -y \
     mesa-dri-drivers \
     mesa-vulkan-drivers \
     vulkan-loader \
     vulkan-tools \
     clinfo \
-    llama-cpp
+    llama-cpp-vulkan-rpc
 
 # --- DOCKER ---
 dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
